@@ -3,10 +3,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
     <script>
     $(document).ready(function() {
-      $('form').submit(function(event){
-        var $input = $('input:first').val();
-        $("ul").append("<li><input type='checkbox' />" + $input + "</li>");
-        var $input = $('input:first').val("");
+      $('.add_todo').submit(function(event) {
+        $(".error").text("");
+        var $input = $(event.target).find("input:first");
+        if ($input.val() == "") {
+          $(".error").append("Enter something son");
+        } else {
+          $("ul").append("<li><input type='checkbox' />" + $input.val() + "</li>");
+          $input.val("");
+        }
         return false;
       });
     });
@@ -18,12 +23,18 @@
       input[type="checkbox"]{
          margin-right: 10px;
       }
+      .error {
+        background: red;
+        color: #fff;
+        margin: 0;
+      }
     </style>
   </head> 
   <body> 
-  	<form>
-  	  What do you need to do today? <input type="text" />
-  	</form>
+    <form class="add_todo">
+      What do you need to do today? <input type="text" />
+    </form>
+    <p class="error"></p>
     <ul>
     </ul>
   </body> 
