@@ -1,0 +1,30 @@
+<html> 
+  <head> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
+    <script>
+    $(document).ready(function() {
+      $('form').submit(function(event){
+        var $input = $('input:first').val();
+        $("ul").append("<li><input type='checkbox' />" + $input + "</li>");
+        var $input = $('input:first').val("");
+        return false;
+      });
+    });
+    </script>
+    <style>
+      li {
+        list-style: none;
+      }
+      input[type="checkbox"]{
+         margin-right: 10px;
+      }
+    </style>
+  </head> 
+  <body> 
+  	<form>
+  	  What do you need to do today? <input type="text" />
+  	</form>
+    <ul>
+    </ul>
+  </body> 
+</html>
